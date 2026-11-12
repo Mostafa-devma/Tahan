@@ -22,9 +22,9 @@
   <!-- Fonts: local copies of Archivo and Cairo (fix 14). fixes.js swaps back to Google Fonts if 14 is off. -->
   <link rel="preload" href="assets/fonts/archivo-normal-latin-b92029.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css" id="fonts-local">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261112i">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261113a">
   <!-- Audit fix switches: open this file to turn any fix off (undo) -->
-  <script src="assets/js/fixes.js?v=20261112i"></script>
+  <script src="assets/js/fixes.js?v=20261113a"></script>
 
   <script type="application/ld+json">
   {
@@ -470,9 +470,27 @@
                 <option value="Mouallaqa" data-ar="المعلقة">Mouallaqa</option>
                 <option value="Taanayel" data-ar="تعنايل">Taanayel</option>
                 <option value="Other" data-i18n="o.other">Another town in the Bekaa</option>
+                <option value="Other-gov" data-i18n="o.otherGov">Another governorate in Lebanon</option>
               </select>
             </label>
             <label class="field"><span data-i18n="o.qty">Quantity in litres (optional)</span><input name="qty" type="number" min="0" step="50" inputmode="numeric" dir="ltr"></label>
+          </div>
+          <!-- Shown only for "Another town in the Bekaa" (town box) or "Another governorate" (governorate + town box) -->
+          <div class="form__row" data-other-place hidden>
+            <label class="field" data-gov-field hidden><span data-i18n="o.gov">Governorate</span>
+              <select name="gov">
+                <option value="" data-i18n="o.pickGov">Choose your governorate</option>
+                <option value="Beirut" data-ar="بيروت">Beirut</option>
+                <option value="Mount Lebanon" data-ar="جبل لبنان">Mount Lebanon</option>
+                <option value="Keserwan-Jbeil" data-ar="كسروان - جبيل">Keserwan-Jbeil</option>
+                <option value="North" data-ar="الشمال">North</option>
+                <option value="Akkar" data-ar="عكار">Akkar</option>
+                <option value="Baalbek-Hermel" data-ar="بعلبك - الهرمل">Baalbek-Hermel</option>
+                <option value="South" data-ar="الجنوب">South</option>
+                <option value="Nabatieh" data-ar="النبطية">Nabatieh</option>
+              </select>
+            </label>
+            <label class="field"><span data-i18n="o.place">Your town</span><input name="place" autocomplete="address-level2"></label>
           </div>
           <div class="form__row">
             <label class="field"><span data-i18n="f.name">Full name</span><input name="name" required autocomplete="name"></label>
@@ -832,6 +850,6 @@
   <a class="actionbar__main" href="#order"><svg aria-hidden="true"><use href="#i-flame"/></svg><span data-i18n="nav.order">Order fuel</span></a>
 </nav>
 
-<script src="assets/js/main.js?v=20261112i" defer></script>
+<script src="assets/js/main.js?v=20261113a" defer></script>
 </body>
 </html>

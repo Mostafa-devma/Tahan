@@ -87,6 +87,7 @@
     'o.lead': 'يصلنا طلبك على واتساب ونتصل بك لتأكيد السعر وموعد التوصيل.',
     'o.for': 'التوصيل إلى', 'o.home': 'منزل', 'o.biz': 'شركة أو مؤسسة',
     'o.town': 'البلدة', 'o.pick': 'اختر بلدتك', 'o.other': 'بلدة أخرى في البقاع',
+    'o.otherGov': 'محافظة أخرى في لبنان', 'o.gov': 'المحافظة', 'o.pickGov': 'اختر محافظتك', 'o.place': 'اسم بلدتك',
     'o.qty': 'الكمية بالليتر (اختياري)', 'o.send': 'أرسل الطلب على واتساب', 'o.call': 'أو اتصل لتطلب',
     'pet.where': 'فروعنا', 'pet.more': 'ونوصل أيضاً إلى أكثر من 10 بلدات أخرى في البقاع',
     'pet.note': 'بلدتك ليست في القائمة؟ أرسل طلبك وسنخبرك إن كنا نصل إليك.',
@@ -789,8 +790,8 @@
 
   /* ---------------- Forms ---------------- */
   const FIELD_ERR = {
-    en: { town: 'Choose your town.', name: 'Add your name.', phone: 'Add your phone number.', message: 'Tell us what you need.' },
-    ar: { town: 'اختر بلدتك.', name: 'أضف اسمك.', phone: 'أضف رقم هاتفك.', message: 'أخبرنا بما تحتاجه.' },
+    en: { town: 'Choose your town.', gov: 'Choose your governorate.', place: 'Write the name of your town.', name: 'Add your name.', phone: 'Add your phone number.', message: 'Tell us what you need.' },
+    ar: { town: 'اختر بلدتك.', gov: 'اختر محافظتك.', place: 'اكتب اسم بلدتك.', name: 'أضف اسمك.', phone: 'أضف رقم هاتفك.', message: 'أخبرنا بما تحتاجه.' },
   };
   // Fix 4: a short message under the field that needs fixing
   const fieldErr = (form, f, key) => {
@@ -818,11 +819,30 @@
   // Fuel order → WhatsApp
   const order = document.querySelector('[data-order]');
   const orderNote = document.querySelector('[data-order-note]');
+  // "Another town in the Bekaa" → town box; "Another governorate" → governorate list + town box
+  const otherRow = order.querySelector('[data-other-place]');
+  const govField = order.querySelector('[data-gov-field]');
+  const extraFields = () => ({ Other: ['place'], 'Other-gov': ['gov', 'place'] }[order.elements.town.value] || []);
+  const syncOther = () => {
+    const extra = extraFields();
+    otherRow.hidden = !extra.length;
+    govField.hidden = !extra.includes('gov');
+    ['gov', 'place'].forEach(n => {
+      const f = order.elements[n];
+      f.required = extra.includes(n);
+      if (!f.required) { f.classList.remove('is-invalid'); f.removeAttribute('aria-invalid'); fieldErr(order, f, null); }
+    });
+  };
+  order.elements.town.addEventListener('change', syncOther);
+  syncOther();
   order.addEventListener('submit', e => {
     e.preventDefault();
-    if (!validate(order, ['town', 'name', 'phone'])) return say(orderNote, MSG[lang].orderInvalid, true);
+    if (!validate(order, ['town', ...extraFields(), 'name', 'phone'])) return say(orderNote, MSG[lang].orderInvalid, true);
     const d = Object.fromEntries(new FormData(order));
-    const town = order.elements.town.selectedOptions[0].textContent;
+    const place = (d.place || '').trim();
+    const town = d.town === 'Other-gov' ? `${place}${lang === 'ar' ? '، ' : ', '}${order.elements.gov.selectedOptions[0].textContent}`
+      : d.town === 'Other' ? `${place} (${lang === 'ar' ? 'البقاع' : 'Bekaa'})`
+      : order.elements.town.selectedOptions[0].textContent;
     const type = d.type === 'home' ? (lang === 'ar' ? 'منزل' : 'Home') : (lang === 'ar' ? 'شركة/مؤسسة' : 'Business');
     const text = lang === 'ar'
       ? `طلب محروقات\nالاسم: ${d.name}\nالهاتف: ${d.phone}\nالبلدة: ${town}\nالتوصيل إلى: ${type}\nالكمية: ${d.qty ? d.qty + ' ليتر' : 'غير محددة'}`
