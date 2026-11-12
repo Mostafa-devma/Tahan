@@ -85,6 +85,7 @@
     'pet.c1': 'منذ 1985', 'pet.c2': '+17 بلدة', 'pet.c3': 'منازل وشركات', 'pet.cta': 'اطلب المحروقات',
     'o.title': 'اطلب المحروقات بأقل من دقيقة.',
     'o.lead': 'يصلنا طلبك على واتساب ونتصل بك لتأكيد السعر وموعد التوصيل.',
+    'o.fuel': 'نوع المحروقات', 'o.diesel': 'مازوت', 'o.petrol': 'بنزين',
     'o.for': 'التوصيل إلى', 'o.home': 'منزل', 'o.biz': 'شركة أو مؤسسة',
     'o.town': 'البلدة', 'o.pick': 'اختر بلدتك', 'o.other': 'بلدة أخرى في البقاع',
     'o.otherGov': 'محافظة أخرى في لبنان', 'o.gov': 'المحافظة', 'o.pickGov': 'اختر محافظتك', 'o.place': 'اسم بلدتك',
@@ -844,9 +845,10 @@
       : d.town === 'Other' ? `${place} (${lang === 'ar' ? 'البقاع' : 'Bekaa'})`
       : order.elements.town.selectedOptions[0].textContent;
     const type = d.type === 'home' ? (lang === 'ar' ? 'منزل' : 'Home') : (lang === 'ar' ? 'شركة/مؤسسة' : 'Business');
+    const fuel = d.fuel === 'petrol' ? (lang === 'ar' ? 'بنزين' : 'Petrol') : (lang === 'ar' ? 'مازوت' : 'Diesel');
     const text = lang === 'ar'
-      ? `طلب محروقات\nالاسم: ${d.name}\nالهاتف: ${d.phone}\nالبلدة: ${town}\nالتوصيل إلى: ${type}\nالكمية: ${d.qty ? d.qty + ' ليتر' : 'غير محددة'}`
-      : `Fuel order\nName: ${d.name}\nPhone: ${d.phone}\nTown: ${town}\nDelivery for: ${type}\nQuantity: ${d.qty ? d.qty + ' L' : 'not specified'}`;
+      ? `طلب محروقات\nالاسم: ${d.name}\nالهاتف: ${d.phone}\nالبلدة: ${town}\nنوع المحروقات: ${fuel}\nالتوصيل إلى: ${type}\nالكمية: ${d.qty ? d.qty + ' ليتر' : 'غير محددة'}`
+      : `Fuel order\nName: ${d.name}\nPhone: ${d.phone}\nTown: ${town}\nFuel: ${fuel}\nDelivery for: ${type}\nQuantity: ${d.qty ? d.qty + ' L' : 'not specified'}`;
     window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
     say(orderNote, MSG[lang].orderOk);
   });
