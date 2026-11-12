@@ -1,0 +1,5 @@
+_audit/
+*.md
+.DS_Store
+Thumbs.db
+desktop.ini
