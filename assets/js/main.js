@@ -123,7 +123,7 @@
     'pl.kicker': 'الطحان للبلاستيك', 'pl.title': 'عبوات بكل الأشكال والأحجام.', 'pl.all': 'الكل',
     'pl.p1': 'قناني', 'pl.p2': 'عبوات زيت', 'pl.p3': 'غالونات', 'pl.p4': 'مرطبانات وأشكال حسب الطلب',
     'pl.lead': 'اختر العبوة ولونها والكمية التي تحتاجها، ثم أضفها إلى السلة. أرسل السلة على واتساب ونرد عليك بالسعر وموعد التسليم.',
-    'pl.f.bottle': 'قناني', 'pl.f.gallon': 'غالونات',
+    'pl.f.oil': 'عبوات زيت', 'pl.f.detergent': 'عبوات منظفات',
     'cart.title': 'سلتك', 'cart.empty': 'سلتك فارغة. اختر العبوات من القائمة وستظهر هنا.', 'cart.browse': 'شاهد العبوات',
     'cart.total': 'المجموع', 'cart.name': 'اسمك', 'cart.company': 'الشركة (اختياري)', 'cart.send': 'أرسل الطلب على واتساب',
     'cart.note': 'نرد عليك بالسعر وموعد التسليم.', 'cart.clear': 'أفرغ السلة', 'cart.view': 'عرض السلة',
@@ -471,13 +471,19 @@
      plus <file>-sm.jpg/.webp at 640px wide, then add one line to PLAST below.
      Names are temporary until the client sends the official product names. */
   const PLAST = [
-    { id: 'oil-800',         kind: 'bottle', file: 'plast-oil-800',         w: 1054, h: 555, cap: '800',  unit: 'ml', en: 'Oil bottle',        ar: 'عبوة زيت',        colors: ['black', 'yellow', 'blue', 'white', 'red', 'silver'] },
-    { id: 'jerrycan-5l',     kind: 'gallon', file: 'plast-jerrycan-5l',     w: 1208, h: 636, cap: '5',    unit: 'l',  en: 'Oil jerrycan',      ar: 'غالون زيت',       colors: ['silver', 'yellow', 'red'] },
-    { id: 'antifreeze-1500', kind: 'bottle', file: 'plast-antifreeze-1500', w: 1074, h: 565, cap: '1.5',  unit: 'l',  en: 'Antifreeze bottle', ar: 'عبوة دواء جليد',  colors: ['silver', 'white'] },
-    { id: 'gallon-3750',     kind: 'gallon', file: 'plast-gallon-3750',     w: 852,  h: 448, cap: '3.75', unit: 'l',  en: 'Gallon',            ar: 'غالون',           colors: ['white'] },
-    { id: 'bottles-white',   kind: 'bottle', file: 'plast-flip-bottle',     w: 770,  h: 405, cap: null,               en: 'Bottles',           ar: 'قناني',           colors: ['white'] }, // TODO capacity + name from the client
+    // kind: 'oil' = oil bottles, 'detergent' = detergent bottles (the client's split). Cards render grouped in KINDS order.
+    { id: 'oil-800',         kind: 'oil',       file: 'plast-oil-800',         w: 1054, h: 555, cap: '800',  unit: 'ml', en: 'Oil bottle',        ar: 'عبوة زيت',        colors: ['black', 'yellow', 'blue', 'white', 'red', 'silver'] },
+    { id: 'jerrycan-5l',     kind: 'oil',       file: 'plast-jerrycan-5l',     w: 1208, h: 636, cap: '5',    unit: 'l',  en: 'Oil jerrycan',      ar: 'غالون زيت',       colors: ['silver', 'yellow', 'red'] },
+    { id: 'antifreeze-1500', kind: 'oil',       file: 'plast-antifreeze-1500', w: 1074, h: 565, cap: '1.5',  unit: 'l',  en: 'Antifreeze bottle', ar: 'عبوة دواء جليد',  colors: ['silver', 'white'] },
+    { id: 'gallon-3750',     kind: 'detergent', file: 'plast-gallon-3750',     w: 852,  h: 448, cap: '3.75', unit: 'l',  en: 'Gallon',            ar: 'غالون',           colors: ['white'] },
+    { id: 'bottles-white',   kind: 'detergent', file: 'plast-flip-bottle',     w: 770,  h: 405, cap: null,               en: 'Bottles',           ar: 'قناني',           colors: ['white'] }, // TODO capacity + name from the client
     // TODO 9 L container: photo comes from the client. Save it as plast-gallon-9l(.jpg/.webp, -sm), set w/h and delete `hidden`.
-    { id: 'gallon-9l',       kind: 'gallon', file: 'plast-gallon-9l',       w: 1200, h: 632, cap: '9',    unit: 'l',  en: 'Gallon',            ar: 'غالون',           colors: ['white'], hidden: true },
+    // Group assumed 'detergent' (white gallon like the 3.75 L); confirm with the client.
+    { id: 'gallon-9l',       kind: 'detergent', file: 'plast-gallon-9l',       w: 1200, h: 632, cap: '9',    unit: 'l',  en: 'Gallon',            ar: 'غالون',           colors: ['white'], hidden: true },
+  ];
+  const KINDS = [
+    { id: 'oil',       en: 'Oil bottles',       ar: 'عبوات زيت' },
+    { id: 'detergent', en: 'Detergent bottles', ar: 'عبوات منظفات' },
   ];
   const UNIT = { ml: { en: 'ml', ar: 'مل' }, l: { en: 'L', ar: 'ليتر' } };
   const COLOURS = {
@@ -583,7 +589,13 @@
 
   const renderCatalog = () => {
     if (!catalog) return;
-    catalog.innerHTML = PLAST.filter(p => !p.hidden).map(p => {
+    catalog.innerHTML = KINDS.map(k => {
+      const items = PLAST.filter(p => !p.hidden && p.kind === k.id);
+      if (!items.length) return '';
+      return `<h3 class="cgrid__group" data-kind="${k.id}" ${filterBy !== 'all' && filterBy !== k.id ? 'hidden' : ''}>${k[lang]}</h3>` + items.map(cardHtml).join('');
+    }).join('');
+  };
+  const cardHtml = p => {
       const sel = pick[p.id];
       const sw = p.colors.map(c => `<label class="sw" style="--c:${COLOURS[c].c}"><input type="radio" name="c-${p.id}" value="${c}" ${c === sel.color ? 'checked' : ''}><span class="sw__chip" aria-hidden="true"></span><span class="sr-only">${COLOURS[c][lang]}</span></label>`).join('');
       const cap = p.cap ? `<p class="ccard__cap">${p.cap}<span>${UNIT[p.unit][lang]}</span></p>` : '';
@@ -597,7 +609,6 @@
           </div>
         </div>
       </article>`;
-    }).join('');
   };
 
   const stepQty = (input, dir) => {
@@ -642,7 +653,7 @@
   fBtns.forEach(b => b.addEventListener('click', () => {
     fBtns.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
     filterBy = b.dataset.f;
-    document.querySelectorAll('[data-catalog] .ccard').forEach(c => c.hidden = filterBy !== 'all' && c.dataset.kind !== filterBy);
+    document.querySelectorAll('[data-catalog] [data-kind]').forEach(c => c.hidden = filterBy !== 'all' && c.dataset.kind !== filterBy);
   }));
 
 
@@ -872,13 +883,13 @@
 
   /* ---------------- Tahan stations: map + picker + station card ----------------
      To add a station photo: put station-<id>.jpg and .webp in assets/img/ and set
-     `photo: 'station-<id>'` below. Coordinates are town centres from OpenStreetMap;
-     TODO swap in each station's exact pin when the client sends them. */
+     `photo: 'station-<id>'` below. Coordinates are town centres from OpenStreetMap,
+     except where marked "exact pin". TODO swap in each station's exact pin when the client sends them. */
   const STATIONS = [
     { id: 'saraain',   en: 'Saraain',   ar: 'سرعين',     lat: 33.8915, lng: 36.0665, photo: 'station-nabi-chit' }, // TODO own photo
     { id: 'nabi-chit', en: 'Nabi Chit', ar: 'النبي شيت', lat: 33.8727, lng: 36.1109, photo: 'station-nabi-chit' },
     { id: 'al-khodr',  en: 'Al Khodr',  ar: 'الخضر',     lat: 33.9045, lng: 36.1211, photo: 'station-nabi-chit' }, // TODO own photo
-    { id: 'temnin',    en: 'Temnin',    ar: 'تمنين',     lat: 33.9038, lng: 35.9798, photo: 'station-temnin' },
+    { id: 'temnin',    en: 'Temnin',    ar: 'تمنين',     lat: 33.8647008, lng: 35.9996559, photo: 'station-temnin' }, // exact pin from the client (Google Maps)
     { id: 'mouallaqa', en: 'Mouallaqa', ar: 'المعلقة',   lat: 33.8070, lng: 35.9390, photo: 'station-nabi-chit' }, // TODO own photo
     { id: 'taanayel',  en: 'Taanayel',  ar: 'تعنايل',    lat: 33.7961, lng: 35.8721, photo: 'station-taanayel', pos: '22% 50%' },
     // Beirut southern suburbs. TODO exact pins and own photos from the client (these are neighbourhood estimates)
