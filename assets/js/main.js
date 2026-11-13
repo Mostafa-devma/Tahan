@@ -64,7 +64,7 @@
     'ww.text': 'تتعامل الطحان للمحروقات مع كبرى شركات المحروقات والغاز في لبنان، لتبقى المنازل والشركات في البقاع مزوّدة بما تحتاجه.',
     'co.label': 'شركاتنا', 'co.p1': 'مازوت', 'co.p2': 'بنزين', 'co.p3': 'توصيل للمنازل',
     'co.l1': 'إنتاج', 'co.l2': 'إعادة تكرير', 'co.l3': 'تعبئة لعلامات أخرى', 'co.pl3': 'حسب الطلب',
-    'co.st': 'محطات الطحان', 'co.st1': '9 فروع', 'co.st2': 'خريطة واتجاهات',
+    'co.st': 'محطات الطحان', 'co.st1': '8 فروع', 'co.st2': 'خريطة واتجاهات',
     'div.lead': 'المحروقات والزيوت والعبوات التي تُعبّأ فيها، تديرها عائلة واحدة من البقاع.',
     'div.p.title': 'المحروقات حتى باب بيتك',
     'div.p.go': 'اطلب المحروقات',
@@ -149,7 +149,7 @@
     'f.name': 'الاسم الكامل', 'f.company': 'الشركة (اختياري)', 'f.phone': 'الهاتف', 'f.country': 'البلد',
     'f.msg': 'ماذا تحتاج؟', 'f.send': 'أرسل الطلب',
 
-    'ssf.nav': 'اطلب', 'ssf.t1': 'شركاتنا', 'ssf.t2': 'أين تجدنا', 'ssf.where': '9 فروع وأكثر من 17 بلدة',
+    'ssf.nav': 'اطلب', 'ssf.t1': 'شركاتنا', 'ssf.t2': 'أين تجدنا', 'ssf.where': '8 فروع وأكثر من 17 بلدة',
     'ssf.map': 'شاهد محطاتنا', 'ssf.copied': 'تم النسخ. نتواصل قريباً!', 'ssf.wa': 'راسلنا على واتساب',
     'ssf.note': '*أسرع طريقة لطلب المحروقات هي واتساب. نتصل بك لتأكيد السعر.',
     'ssf.pill': 'مجموعة الطحان', 'ssf.c1r': 'التأسيس', 'ssf.c1n': 'البقاع، 1985',
@@ -890,11 +890,10 @@
     { id: 'nabi-chit', en: 'Nabi Chit', ar: 'النبي شيت', lat: 33.8717625, lng: 36.1104531, photo: 'station-nabi-chit' }, // exact pin from the client (Google Maps "Wardieh Nabi Chit", plus code V4C6+P54)
     { id: 'al-khodr',  en: 'Al Khodr',  ar: 'الخضر',     lat: 33.8901646, lng: 36.1255903, photo: 'station-nabi-chit' }, // exact pin from the client (Google Maps). TODO own photo
     { id: 'temnin',    en: 'Temnin',    ar: 'تمنين',     lat: 33.8647008, lng: 35.9996559, photo: 'station-temnin' }, // exact pin from the client (Google Maps)
-    { id: 'mouallaqa', en: 'Mouallaqa', ar: 'المعلقة',   lat: 33.8070, lng: 35.9390, photo: 'station-nabi-chit' }, // TODO own photo
     { id: 'taanayel',  en: 'Taanayel',  ar: 'تعنايل',    lat: 33.8053625, lng: 35.8630469, photo: 'station-taanayel', /* exact pin from the client (Google Maps "Mohammad Jamal's Hypco, Jdita", plus code RV47+46V) */ pos: '22% 50%' },
     // Beirut southern suburbs. TODO exact pins and own photos from the client (these are neighbourhood estimates)
     { id: 'ain-el-delbeh', en: 'Ain el Delbeh', ar: 'عين الدلبة', lat: 33.8370914, lng: 35.5010128, photo: 'station-nabi-chit', region: 'dahieh' }, // exact pin from the client (Google Maps)
-    { id: 'bir-el-abed',   en: 'Bir el Abed',   ar: 'بئر العبد',  lat: 33.8558, lng: 35.5058, photo: 'station-bir-el-abed', region: 'dahieh' },
+    { id: 'bir-el-abed',   en: 'Bir el Abed',   ar: 'بئر العبد',  lat: 33.8518113, lng: 35.5124427, photo: 'station-bir-el-abed', region: 'dahieh' }, // exact pin from the client (Google Maps)
     { id: 'hadath',        en: 'Hadath (Mécanique)', ar: 'المعاينة، الحدث', lat: 33.8350, lng: 35.5363, photo: 'station-nabi-chit', region: 'dahieh' },
   ];
   const REGION = {

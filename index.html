@@ -22,9 +22,9 @@
   <!-- Fonts: local copies of Archivo and Cairo (fix 14). fixes.js swaps back to Google Fonts if 14 is off. -->
   <link rel="preload" href="assets/fonts/archivo-normal-latin-b92029.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css" id="fonts-local">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261114g">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261114h">
   <!-- Audit fix switches: open this file to turn any fix off (undo) -->
-  <script src="assets/js/fixes.js?v=20261114g"></script>
+  <script src="assets/js/fixes.js?v=20261114h"></script>
 
   <script type="application/ld+json">
   {
@@ -44,7 +44,7 @@
     ]
   }
   </script>
-  <!-- Fix 13: the 9 branches for search engines. Add "telephone" and "geo" once the client sends real numbers and exact pins. -->
+  <!-- Fix 13: the 8 branches for search engines. Add "telephone" and "geo" once the client sends real numbers and exact pins. -->
   <script type="application/ld+json" data-fx="13">
 {
  "@context": "https://schema.org",
@@ -104,22 +104,6 @@
    "address": {
     "@type": "PostalAddress",
     "addressLocality": "Temnin",
-    "addressRegion": "Bekaa",
-    "addressCountry": "LB"
-   },
-   "parentOrganization": {
-    "@type": "Organization",
-    "name": "Tahan Group",
-    "url": "https://www.tahangroup.com/"
-   }
-  },
-  {
-   "@type": "GasStation",
-   "name": "Tahan station, Mouallaqa",
-   "alternateName": "محطة الطحان، المعلقة",
-   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Mouallaqa",
     "addressRegion": "Bekaa",
     "addressCountry": "LB"
    },
@@ -413,7 +397,7 @@
               <span class="co__kicker" data-fx="3" data-i18n="co.st.of">Part of Tahan Petroleum</span>
               <span class="co__title"><span data-i18n="co.st">Tahan stations</span><svg class="co__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
               <span class="co__desc" data-i18n="div.st.desc">Fill up at the pump, or have your order delivered from here.</span>
-              <span class="co__tags"><span data-i18n="co.st1">9 branches</span><span data-i18n="co.st2">Map and directions</span></span>
+              <span class="co__tags"><span data-i18n="co.st1">8 branches</span><span data-i18n="co.st2">Map and directions</span></span>
             </span>
           </a>
         </li>
@@ -472,7 +456,6 @@
                 <option value="Nabi Chit" data-ar="النبي شيت">Nabi Chit</option>
                 <option value="Al Khodr" data-ar="الخضر">Al Khodr</option>
                 <option value="Temnin" data-ar="تمنين">Temnin</option>
-                <option value="Mouallaqa" data-ar="المعلقة">Mouallaqa</option>
                 <option value="Taanayel" data-ar="تعنايل">Taanayel</option>
                 <option value="Other" data-i18n="o.other">Another town in the Bekaa</option>
                 <option value="Other-gov" data-i18n="o.otherGov">Another governorate in Lebanon</option>
@@ -517,7 +500,6 @@
             <li><a href="#station-nabi-chit" data-station-link="nabi-chit"><span class="en">Nabi Chit</span><span class="ar">النبي شيت</span><svg class="route__photo" aria-hidden="true"><use href="#i-photo"/></svg></a></li>
             <li><a href="#station-al-khodr" data-station-link="al-khodr"><span class="en">Al Khodr</span><span class="ar">الخضر</span><svg class="route__photo" aria-hidden="true"><use href="#i-photo"/></svg></a></li>
             <li><a href="#station-temnin" data-station-link="temnin"><span class="en">Temnin</span><span class="ar">تمنين</span><svg class="route__photo" aria-hidden="true"><use href="#i-photo"/></svg></a></li>
-            <li><a href="#station-mouallaqa" data-station-link="mouallaqa"><span class="en">Mouallaqa</span><span class="ar">المعلقة</span><svg class="route__photo" aria-hidden="true"><use href="#i-photo"/></svg></a></li>
             <li><a href="#station-taanayel" data-station-link="taanayel"><span class="en">Taanayel</span><span class="ar">تعنايل</span><svg class="route__photo" aria-hidden="true"><use href="#i-photo"/></svg></a></li>
             <li><a href="#station-ain-el-delbeh" data-station-link="ain-el-delbeh"><span class="en">Ain el Delbeh</span><span class="ar">عين الدلبة</span><svg class="route__photo" aria-hidden="true"><use href="#i-photo"/></svg></a></li>
             <li><a href="#station-bir-el-abed" data-station-link="bir-el-abed"><span class="en">Bir el Abed</span><span class="ar">بئر العبد</span><svg class="route__photo" aria-hidden="true"><use href="#i-photo"/></svg></a></li>
@@ -775,7 +757,7 @@
         <h2 class="ssf-tag" data-i18n="ssf.t2">Find us</h2>
         <address class="ssf-big">
           <span class="ssf-line" style="--i:0"><span data-i18n="ct.addr">Bekaa, Lebanon</span></span>
-          <span class="ssf-line" style="--i:1"><span data-i18n="ssf.where">9 branches, 17+ towns</span></span>
+          <span class="ssf-line" style="--i:1"><span data-i18n="ssf.where">8 branches, 17+ towns</span></span>
         </address>
         <a class="ssf-map" href="#station">
           <span data-i18n="ssf.map">See our stations</span>
@@ -855,6 +837,6 @@
   <a class="actionbar__main" href="#order"><svg aria-hidden="true"><use href="#i-flame"/></svg><span data-i18n="nav.order">Order fuel</span></a>
 </nav>
 
-<script src="assets/js/main.js?v=20261114g" defer></script>
+<script src="assets/js/main.js?v=20261114h" defer></script>
 </body>
 </html>
