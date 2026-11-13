@@ -887,7 +887,7 @@
      except where marked "exact pin". TODO swap in each station's exact pin when the client sends them. */
   const STATIONS = [
     { id: 'saraain',   en: 'Saraain',   ar: 'سرعين',     lat: 33.8736875, lng: 36.1003594, photo: 'station-nabi-chit' }, // exact pin from the client (Google Maps "Al Tahan Station 2", plus code V4F2+F4H). TODO own photo
-    { id: 'nabi-chit', en: 'Nabi Chit', ar: 'النبي شيت', lat: 33.8727, lng: 36.1109, photo: 'station-nabi-chit' },
+    { id: 'nabi-chit', en: 'Nabi Chit', ar: 'النبي شيت', lat: 33.8717625, lng: 36.1104531, photo: 'station-nabi-chit' }, // exact pin from the client (Google Maps "Wardieh Nabi Chit", plus code V4C6+P54)
     { id: 'al-khodr',  en: 'Al Khodr',  ar: 'الخضر',     lat: 33.9045, lng: 36.1211, photo: 'station-nabi-chit' }, // TODO own photo
     { id: 'temnin',    en: 'Temnin',    ar: 'تمنين',     lat: 33.8647008, lng: 35.9996559, photo: 'station-temnin' }, // exact pin from the client (Google Maps)
     { id: 'mouallaqa', en: 'Mouallaqa', ar: 'المعلقة',   lat: 33.8070, lng: 35.9390, photo: 'station-nabi-chit' }, // TODO own photo
