@@ -5,9 +5,9 @@
      Every phone / WhatsApp / email link on the page reads from here.
      ============================================================ */
   const CONFIG = {
-    phone: '+96176642506',            // temporary number from the client (Lebanon); confirm it is final
-    phoneDisplay: '+961 76 642 506',  // how it should look on the page
-    whatsapp: '96176642506',          // assumed same as the phone: confirm it has WhatsApp
+    phone: '+96176999978',            // temporary number from the client (Lebanon); confirm it is final
+    phoneDisplay: '+961 76 999 978',  // how it should look on the page
+    whatsapp: '96176999978',          // assumed same as the phone: confirm it has WhatsApp
     email: 'info@tahangroup.com',     // TODO real email once the domain is bought
   };
 
@@ -90,7 +90,7 @@
     'o.town': 'البلدة', 'o.pick': 'اختر بلدتك', 'o.other': 'بلدة أخرى في البقاع',
     'o.otherGov': 'محافظة أخرى في لبنان', 'o.gov': 'المحافظة', 'o.pickGov': 'اختر محافظتك', 'o.place': 'اسم بلدتك',
     'o.qty': 'الكمية بالليتر (اختياري)', 'o.send': 'أرسل الطلب على واتساب', 'o.call': 'أو اتصل لتطلب',
-    'pet.where': 'فروعنا', 'pet.more': 'ونوصل أيضاً إلى أكثر من 10 بلدات أخرى في لبنان',
+    'pet.where': 'فروعنا', 'pet.more': 'ونوصل أيضاً إلى أكثر من 10 بلدات لبنانية أخرى',
     'pet.note': 'بلدتك ليست في القائمة؟ أرسل طلبك وسنخبرك إن كنا نصل إليك.',
     'pet.hint': 'اضغط على الفرع لتراه على الخريطة.',
     'sts.title': 'محطات الطحان', 'sts.text': 'اختر بلدة على الخريطة أو من القائمة لترى محطتها.',
