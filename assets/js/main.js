@@ -893,7 +893,7 @@
     { id: 'mouallaqa', en: 'Mouallaqa', ar: 'المعلقة',   lat: 33.8070, lng: 35.9390, photo: 'station-nabi-chit' }, // TODO own photo
     { id: 'taanayel',  en: 'Taanayel',  ar: 'تعنايل',    lat: 33.8053625, lng: 35.8630469, photo: 'station-taanayel', /* exact pin from the client (Google Maps "Mohammad Jamal's Hypco, Jdita", plus code RV47+46V) */ pos: '22% 50%' },
     // Beirut southern suburbs. TODO exact pins and own photos from the client (these are neighbourhood estimates)
-    { id: 'ain-el-delbeh', en: 'Ain el Delbeh', ar: 'عين الدلبة', lat: 33.8508, lng: 35.5003, photo: 'station-nabi-chit', region: 'dahieh' },
+    { id: 'ain-el-delbeh', en: 'Ain el Delbeh', ar: 'عين الدلبة', lat: 33.8370914, lng: 35.5010128, photo: 'station-nabi-chit', region: 'dahieh' }, // exact pin from the client (Google Maps)
     { id: 'bir-el-abed',   en: 'Bir el Abed',   ar: 'بئر العبد',  lat: 33.8558, lng: 35.5058, photo: 'station-bir-el-abed', region: 'dahieh' },
     { id: 'hadath',        en: 'Hadath (Mécanique)', ar: 'المعاينة، الحدث', lat: 33.8350, lng: 35.5363, photo: 'station-nabi-chit', region: 'dahieh' },
   ];
