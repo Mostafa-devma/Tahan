@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>لوحة التحكم | مجموعة الطحان</title>
+  <link rel="icon" href="../assets/img/logo.png">
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="admin.css?v=20261116a">
+  <!-- Supabase settings (url + publishable key) live in content.js, shared with the site -->
+  <script src="../assets/js/content.js?v=20261116a"></script>
+  <script src="../assets/js/defaults.js?v=20261116a"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+  <!-- Login -->
+  <main class="login" data-view="login" hidden>
+    <form class="login__card" data-login novalidate>
+      <img class="login__logo" src="../assets/img/logo.png" alt="مجموعة الطحان" width="120" height="60">
+      <h1>لوحة التحكم</h1>
+      <p class="muted">سجّل الدخول لتعديل محتوى الموقع.</p>
+      <label class="fld"><span>البريد الإلكتروني</span><input name="email" type="email" autocomplete="username" dir="ltr" required></label>
+      <label class="fld"><span>كلمة السر</span><input name="password" type="password" autocomplete="current-password" dir="ltr" required></label>
+      <button class="btn btn--primary btn--wide" type="submit">دخول</button>
+      <p class="msg" data-login-msg role="alert"></p>
+    </form>
+  </main>
+
+  <!-- Not connected to Supabase (shown on the live site until content.js has the project URL and key) -->
+  <main class="login" data-view="setup" hidden>
+    <div class="login__card">
+      <h1>اللوحة غير مربوطة بعد</h1>
+      <p class="muted">لازم تنحط معلومات مشروع Supabase بملف <code>assets/js/content.js</code>. الخطوات بملف <code>supabase/setup.sql</code>.</p>
+    </div>
+  </main>
+
+  <!-- Dashboard -->
+  <div class="app" data-view="app" hidden>
+    <header class="top">
+      <div class="top__brand"><img src="../assets/img/logo.png" alt="" width="72" height="36"><b>لوحة التحكم</b></div>
+      <div class="top__status" data-status aria-live="polite"></div>
+      <div class="top__actions">
+        <a class="btn btn--ghost" href="../" target="_blank" rel="noopener">فتح الموقع</a>
+        <button class="btn btn--primary" type="button" data-save disabled>حفظ ونشر</button>
+        <button class="btn btn--link" type="button" data-logout>خروج</button>
+      </div>
+    </header>
+    <p class="demo" data-demo hidden>وضع التجربة: التعديلات بتنحفظ على هالكمبيوتر بس، مش على الموقع الحقيقي.</p>
+    <nav class="tabs" role="tablist" aria-label="أقسام اللوحة" data-tabs></nav>
+    <main class="panel" data-panel></main>
+  </div>
+
+  <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+  <script src="admin.js?v=20261116a"></script>
+</body>
+</html>

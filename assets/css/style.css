@@ -1525,3 +1525,6 @@ html.fx-15 .co__soon { color: var(--steel); }
 .cgrid__group::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .cgrid__group:first-child { margin-top: 0; }
 @media (max-width: 560px) { .plast .filter { display: flex; width: 100%; } .plast .filter button { flex: 1 1 auto; min-width: 0; padding: 0 10px; } }.plast .filter button { white-space: nowrap; }
+
+/* content.js: hidden for at most 1.5 s while the owner's edits load */
+html.cms-wait body { opacity: 0; }
