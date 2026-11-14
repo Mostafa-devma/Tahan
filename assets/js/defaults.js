@@ -6,7 +6,7 @@
     phone: '+96176999978',            // temporary number from the client (Lebanon); confirm it is final
     phoneDisplay: '+961 76 999 978',  // how it should look on the page
     whatsapp: '96176999978',          // assumed same as the phone: confirm it has WhatsApp
-    email: 'info@tahangroup.com',     // TODO real email once the domain is bought
+    email: 'al-tahan-trading@hotmail.com',
   };
 
   const AR = {

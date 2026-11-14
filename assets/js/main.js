@@ -727,7 +727,7 @@
       : d.town === 'Other' ? `${place} (${lang === 'ar' ? 'البقاع' : 'Bekaa'})`
       : order.elements.town.selectedOptions[0].textContent;
     const type = d.type === 'home' ? (lang === 'ar' ? 'منزل' : 'Home') : (lang === 'ar' ? 'شركة/مؤسسة' : 'Business');
-    const fuel = d.fuel === 'petrol' ? (lang === 'ar' ? 'بنزين' : 'Petrol') : (lang === 'ar' ? 'مازوت' : 'Diesel');
+    const fuel = d.fuel === 'petrol' ? (lang === 'ar' ? 'بنزين' : 'Gasoline') : (lang === 'ar' ? 'مازوت' : 'Diesel');
     const text = lang === 'ar'
       ? `طلب محروقات\nالاسم: ${d.name}\nالهاتف: ${d.phone}\nالبلدة: ${town}\nنوع المحروقات: ${fuel}\nالتوصيل إلى: ${type}\nالكمية: ${d.qty ? d.qty + ' ليتر' : 'غير محددة'}`
       : `Fuel order\nName: ${d.name}\nPhone: ${d.phone}\nTown: ${town}\nFuel: ${fuel}\nDelivery for: ${type}\nQuantity: ${d.qty ? d.qty + ' L' : 'not specified'}`;
